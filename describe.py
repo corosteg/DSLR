@@ -64,7 +64,7 @@ if __name__ == "__main__":
     min_val = {}
     max_val = {}
 
-    pand = pd.read_csv('./test.csv')
+    # pand = pd.read_csv('./dataset_train.csv')
     print(pand.describe(), '\n')
     
     lst_data = data.split('\n')
@@ -86,10 +86,12 @@ if __name__ == "__main__":
                 try:
                     try:
                         features[index][i] = int(features[index][i])
-                        feature[features_names[i]].append(features[index][i])
+                        if features[index][i] == features[index][i]:
+                            feature[features_names[i]].append(features[index][i])
                     except:
                         features[index][i] = float(features[index][i])
-                        feature[features_names[i]].append(features[index][i])
+                        if features[index][i] == features[index][i]:
+                           feature[features_names[i]].append(features[index][i])
                 except:
                     pass
 
@@ -104,6 +106,3 @@ if __name__ == "__main__":
         mean[value] = round(find_average(feature[value]), 6)
         min_val[value] = round(find_min(feature[value]), 6)
         max_val[value] = round(find_max(feature[value]), 6)
-
-    print(min_val)
-    print(max_val)
